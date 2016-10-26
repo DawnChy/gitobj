@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+    <style>
+        #mydiv2{
+            width: 500px;
+            height: 200px;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="get_Test()">get请求按钮</button>
+    <button onclick="post_Test()">post请求按钮</button>
+    <div id="mydiv2"></div>
+    <script>
+        function get_Test() {
+            var xhr;
+            if (window.XMLHttpRequest) {
+                //code for IE7+,Firefox,Chorme,Opera,Safari
+                xhr = new XMLHttpRequest();
+            }
+            else {
+                //code for IE6,IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //XHR响应
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("mydiv2").innerHTML = xhr.responseText;
+                }
+            }
+            //GET方式发送请求
+            xhr.open("GET","/test?t=" + Math.random(),true);
+            xhr.send();
+        }
+
+        function post_Test() {
+            var xhr;
+            if (window.XMLHttpRequest) {
+                //code for IE7+,Firefox
+                //Chorme,Opera,Safari
+                xhr = new XMLHttpRequest();
+            }
+            else {
+                //code for IE6,IE5
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //XHR响应
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("mydiv2").innerHTML = xhr.responseText;
+                }
+            }
+            //POST方式发送请求
+            xhr.open("POST","/test-post",true);
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send("fname=各位同学&lname=你们");
+        }
+    </script>
+</body>
+</html>

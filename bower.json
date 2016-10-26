@@ -1,0 +1,21 @@
+{
+  "name": "gitobj",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "DawnChy"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.1.1"
+  }
+}
